@@ -1,0 +1,14 @@
+<form accept-charset="UTF-8" action="/sessions/create" class="form-horizontal" id="new_session" method="post">
+  <div style="margin:0;padding:0;display:inline">
+    <div class="form-group"><label for="email">Email</label>
+      <input autofocus="autofocus" class="form-control" id="email" name="email" type="email" value="" />
+    </div>
+
+    <div class="form-group"><label for="password">Password</label>
+      <input class="form-control" id="password" name="password" type="password" />
+    </div>
+
+    <div class="form-group">
+      <input class="btn btn-primary" name="commit" type="submit" value="Sign in" />
+    </div>
+</form>

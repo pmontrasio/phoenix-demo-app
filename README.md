@@ -9,7 +9,8 @@ To start this Phoenix application you have to:
 
 1. Create a database
 
-In postgresql (adapt to mysql):
+PostgreSQL:
+
 
 ```
 $ psql -U postgres
@@ -21,12 +22,22 @@ alter database my_project owner to my_project;
 \q
 ```
 
-If you're using mysql you need to change the driver in mix.exs and lib/my_project/repo.ex
+Exercise: adapt this to MySQL.
+Hint: you need to change the driver in mix.exs and lib/my_project/repo.ex
+Google for the driver.
 
 2. Install dependencies with `mix do deps.get, compile`
 
 3. Run the migrations with `mix ecto.migrate Repo`
 
-4. Start Phoenix router with `mix phoenix.start`
+4. Seed the database
+
+```
+mix run seed.exs
+```
+
+5. Start Phoenix router with `mix phoenix.start`
 
 Now you can visit `localhost:4000` from your browser.
+
+6. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.

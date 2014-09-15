@@ -9,4 +9,10 @@ defmodule MyProject.User do
 		field :email, :string
 		field :password, :string
 	end
+
+	def encrypt_password(plaintext) do
+		# We must pass char lists to Erlang
+		:base64.encode(:crypto.hash(:sha256, to_char_list(plaintext)))
+	end
+
 end

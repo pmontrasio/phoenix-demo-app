@@ -1,7 +1,0 @@
-defmodule Repo do
-	use Ecto.Repo, adapter: Ecto.Adapters.Postgres
-
-	def conf do
-		parse_url "ecto://my_project:postgres@localhost/my_project"
-	end
-end

@@ -13,7 +13,7 @@ defmodule MyProject.Mixfile do
   def application do
     [
       mod: { MyProject, [] },
-      applications: [:phoenix, :cowboy, :logger]
+      applications: [:phoenix, :cowboy, :logger, :postgrex, :ecto]
     ]
   end
 
@@ -25,7 +25,9 @@ defmodule MyProject.Mixfile do
   defp deps do
     [
       {:phoenix, "0.4.1"},
-      {:cowboy, "~> 1.0.0"}
+      {:cowboy, "~> 1.0.0"},
+      {:postgrex, "~> 0.6.0"},
+      {:ecto, "~> 0.2.0"}
     ]
   end
 end

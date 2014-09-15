@@ -2,6 +2,7 @@
   "cowlib": {:package, "1.0.0"},
   "decimal": {:package, "0.2.5"},
   "ecto": {:package, "0.2.4"},
+  "hex": {:git, "https://github.com/rjsamson/hex", "5a5ab3d3c2c4dd604520068657a6b19889467504", []},
   "linguist": {:package, "0.1.2"},
   "phoenix": {:package, "0.4.1"},
   "plug": {:package, "0.7.0"},

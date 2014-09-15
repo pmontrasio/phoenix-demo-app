@@ -12,7 +12,8 @@ defmodule MyProject.SessionsController do
 	# (FunctionClauseError) no function clause matching in MyProject.SessionsController.create/2
   def create(conn, _params) do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
-		Logger.debug "EMAIL #{email}, PASSWORD #{password}"
+		encrypted_password = :base64.encode(:crypto.hash(:sha256, password))
+		Logger.debug "EMAIL #{email}, PASSWORD #{password}, ENCRYPTED #{encrypted_password}"
 
     redirect conn, Router.pages_path(:index)
   end

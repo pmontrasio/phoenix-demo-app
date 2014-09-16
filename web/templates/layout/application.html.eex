@@ -25,13 +25,12 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li>XXXX
-	    <% if @current_user == nil do %>
-	    <a href="/session/new">Login</a>
+          <li>
+	    <%= if @current_user == nil do %>
+	    <a href="/sessions/new">Login</a>
 	    <% else %>
             Hello <%= @current_user.email %>
             <% end %>
-	    YYY
           </li>
         </ul>
       </div>

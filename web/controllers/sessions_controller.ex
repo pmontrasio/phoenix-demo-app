@@ -18,7 +18,7 @@ defmodule MyProject.SessionsController do
 		case User.find(email, password) do
 			[user] ->
 				put_session(conn, :user_id, user.id)
-				Logger.debug "EMAIL #{user.email} logged in"
+				Logger.debug "EMAIL #{user.email} #{user.id} logged in"
 				redirect conn, Router.pages_path(:index)
 			[] ->
 				Logger.debug "LOGIN FAILED"
@@ -27,6 +27,7 @@ defmodule MyProject.SessionsController do
   end
 
   def destroy(conn, _params) do
+		Logger.debug "LOGOUT"
 		delete_session(conn, :user_id)
     redirect conn, Router.pages_path(:index)
   end

@@ -17,21 +17,13 @@ defmodule MyProject.SessionsController do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
 		case User.find(email, password) do
 			[user] ->
-				Logger.debug "EMAIL #{user.email}"
-				Logger.debug "PASS #{user.password}"
+				put_session(conn, :user_id, user.id)
+				Logger.debug "EMAIL #{user.email} logged in"
+				redirect conn, Router.pages_path(:index)
 			[] ->
-				IO.puts "sorry"
+				Logger.debug "LOGIN FAILED"
+				redirect conn, Router.sessions_path(:new)
 		end
-
-		#query = from user in User,
-		#  where: user.email == email and user.password == encrypted_password,
-		#		select: user
-		#[user] = Repo.all(query)
-
-		# if user with email and encrypted_password exists
-		#   put_session(conn, :user_id, user.id)
-		# end
-    redirect conn, Router.pages_path(:index)
   end
 
   def destroy(conn, _params) do

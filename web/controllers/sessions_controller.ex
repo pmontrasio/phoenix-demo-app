@@ -1,7 +1,10 @@
 defmodule MyProject.SessionsController do
   use Phoenix.Controller
-	alias MyProject.Router # So we can just write Router.
 	require Logger
+
+	# shorthand for alias MyProject.Router, as: Router
+	alias MyProject.Router # So we can just write Router.
+	alias MyProject.User
 
   def new(conn, _params) do
     render conn, "new"
@@ -12,8 +15,18 @@ defmodule MyProject.SessionsController do
 	# (FunctionClauseError) no function clause matching in MyProject.SessionsController.create/2
   def create(conn, _params) do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
-		encrypted_password = User.encrypt_password(password)
-		Logger.debug "EMAIL #{email}, PASSWORD #{password}, ENCRYPTED #{encrypted_password}"
+		case User.find(email, password) do
+			[user] ->
+				Logger.debug "EMAIL #{user.email}"
+				Logger.debug "PASS #{user.password}"
+			[] ->
+				IO.puts "sorry"
+		end
+
+		#query = from user in User,
+		#  where: user.email == email and user.password == encrypted_password,
+		#		select: user
+		#[user] = Repo.all(query)
 
 		# if user with email and encrypted_password exists
 		#   put_session(conn, :user_id, user.id)

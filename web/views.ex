@@ -13,5 +13,3 @@ defmodule MyProject.Views do
 
   # Functions defined here are available to all other views/templates
 end
-
-

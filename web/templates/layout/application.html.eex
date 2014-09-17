@@ -26,12 +26,13 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li>
+	    <!-- https://github.com/phoenixframework/phoenix/issues/351 -->
 	    <%= if @current_user == nil do %>
-	    <a href="/login">Login</a>
+	    <a href="<%= Router.login_path(:new) %>">Login</a>
 	    <% else %>
             <strong><%= @current_user.email %></strong>
 	    -
-	    <a href="/logout">Logout</a>
+	    <a href="<%= Router.logout_path(:destroy) %>">Logout</a>
             <% end %>
           </li>
         </ul>

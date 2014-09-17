@@ -12,11 +12,9 @@ defmodule AuthenticationPlug do
 	def call(conn, _opts) do
 		user_id = get_session(conn, :user_id)
 		conn = Plug.Conn.assign(conn, :current_user, nil)
-		Logger.debug "user_id #{user_id} ??????????????"
 		unless user_id == nil do
 			user = Repo.get(User, user_id)
 			unless user == nil do
-				Logger.debug "OKKKKKKKKK"
 				conn = Plug.Conn.assign(conn, :current_user, user)
 			end
 		end

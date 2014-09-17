@@ -8,6 +8,7 @@ defmodule MyProject.Views do
       # This block is expanded within all views for aliases, imports, etc
       import MyProject.I18n
       import MyProject.Router.Helpers
+			alias MyProject.Router
     end
   end
 

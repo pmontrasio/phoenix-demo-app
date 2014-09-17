@@ -27,9 +27,11 @@
         <ul class="nav nav-pills pull-right">
           <li>
 	    <%= if @current_user == nil do %>
-	    <a href="/sessions/new">Login</a>
+	    <a href="/login">Login</a>
 	    <% else %>
-            Hello <%= @current_user.email %>
+            <strong><%= @current_user.email %></strong>
+	    -
+	    <a href="/logout">Logout</a>
             <% end %>
           </li>
         </ul>

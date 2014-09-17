@@ -8,6 +8,8 @@ defmodule MyProject.Router do
 	#   UndefinedFunctionError) undefined function:
 	#   SessionsController.call/2 (module SessionsController is not available)
 
-	resources "/sessions", MyProject.SessionsController
+  get "/login", MyProject.SessionsController, :new, as: :login
+  get "/logout", MyProject.SessionsController, :destroy, as: :logout
+	resources "/sessions", MyProject.SessionsController, only: [ :create ]
 	resources "/users",    MyProject.UsersController
 end

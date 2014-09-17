@@ -17,7 +17,7 @@ defmodule MyProject.SessionsController do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
 		case User.find(email, password) do
 			[user] ->
-				put_session(conn, :user_id, user.id)
+				conn = fetch_session(conn) |> put_session(:user_id, user.id)
 				Logger.debug "EMAIL #{user.email} #{user.id} logged in"
 				redirect conn, Router.pages_path(:index)
 			[] ->

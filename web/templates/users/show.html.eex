@@ -1,1 +1,5 @@
-<h1>Ciao user normale</h1>
+<h1>Hello!</h1>
+
+<p>You are looking at user <%= @user.email %> as a normal user.</p>
+
+<p>Try looking at <a href="<%= admin_users_path(:show, @user.id) %>"><%= @user.email %></a> as an admin.</p>

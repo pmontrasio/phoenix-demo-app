@@ -27,4 +27,5 @@ defmodule MyProject.User do
 			select: u
 		Repo.all(query)
 	end
+
 end

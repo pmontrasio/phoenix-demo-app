@@ -71,5 +71,21 @@
     <div class="container">
       <%= @inner %>
     </div>
+
+    <div class="container">
+	<h1>Help</h1>
+	<%= unless @current_user do %>
+	<p>Chances are that you already followed the instructions in the README. If you didn't, read how to seed the
+	  database and then login with one of the users created in the seeds.exs file.</p>
+	<p>They are</p>
+	<ul>
+	  <li>admin@example.com / password</li>
+	  <li>user@example.com / password</li>
+	</ul>
+      <% else %>
+	<p>Try to access to other users with the /users/:id and the /admin/users/:id URLs.</p>
+      <% end %>
+    </div>
+
   </body>
 </html>

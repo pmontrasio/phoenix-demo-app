@@ -18,10 +18,15 @@ defmodule MyProject.SessionsController do
 		case User.find(email, password) do
 			[user] ->
 				Logger.debug "EMAIL #{user.email} #{user.id} logged in"
+				if user.admin do
+					path = Router.admin_users_path(:show, user.id)
+				else
+					path = Router.users_path(:show, user.id)
+				end
 				fetch_session(conn)
 				|> put_session(:user_id, user.id)
 				|> Flash.put(:notice, "Login successful")
-				|> redirect Router.users_path(:show, user.id)
+				|> redirect path
 			[] ->
 				Logger.debug "LOGIN FAILED"
 				fetch_session(conn)

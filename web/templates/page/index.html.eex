@@ -6,9 +6,3 @@
   <p>Get the slides of that presentation and access links to resources about Elixir and Phoenix
     <a href="http://www.connettiva.eu/rubyday">here</a>.</p>
 </div>
-
-<div class="row">
-  <h1>Help</h1>
-  <p>Chances are that you already followed the instructions in the README. If you didn't, read how to seed the
-    database and then login with one of the users created in the seeds.exs file.</p>
-</div>

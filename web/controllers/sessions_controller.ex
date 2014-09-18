@@ -17,18 +17,25 @@ defmodule MyProject.SessionsController do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
 		case User.find(email, password) do
 			[user] ->
-				conn = fetch_session(conn) |> put_session(:user_id, user.id)
 				Logger.debug "EMAIL #{user.email} #{user.id} logged in"
-				redirect conn, Router.pages_path(:index)
+				fetch_session(conn)
+				|> put_session(:user_id, user.id)
+				|> Flash.put(:notice, "Login successful")
+				|> redirect Router.users_path(:show, user.id)
 			[] ->
 				Logger.debug "LOGIN FAILED"
-				redirect conn, Router.sessions_path(:new)
+				fetch_session(conn)
+				|> put_session(:login_as, email)
+				|> Flash.put(:notice, "Login failed")
+				|> redirect Router.sessions_path(:new)
 		end
   end
 
   def destroy(conn, _params) do
 		Logger.debug "LOGOUT"
-		delete_session(conn, :user_id)
-    redirect conn, Router.pages_path(:index)
+		fetch_session(conn)
+		|> delete_session(:user_id)
+		|> Flash.put(:notice, "Logout successful")
+    |> redirect Router.pages_path(:index)
   end
 end

@@ -22,24 +22,43 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="header">
+    <nav class="navbar navbar-default" id="navbar-main" role="navigation">
+      <div class="navbar-header">
+        <div class="navbar-brand">
+	  <a href="/">Home</a>
+	</div>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-links">
         <ul class="nav nav-pills pull-right">
+	  <!-- https://github.com/phoenixframework/phoenix/issues/351 -->
+	  <%= if @current_user == nil do %>
           <li>
-	    <!-- https://github.com/phoenixframework/phoenix/issues/351 -->
-	    <%= if @current_user == nil do %>
-	    <a href="<%= Router.login_path(:new) %>">Login</a>
-	    <% else %>
-            <strong><%= @current_user.email %></strong>
-	    -
-	    <a href="<%= Router.logout_path(:destroy) %>">Logout</a>
-            <% end %>
+	    <a href="<%= Router.sessions_path(:new) %>">Login</a>
+	  </li>
+	  <% else %>
+	  <li>
+            <a href="<%= Router.users_path(:show, @current_user.id) %>"><%= @current_user.email %></a>
+	  </li>
+	  <li>
+	    <a href="<%= Router.sessions_path(:destroy) %>">Logout</a>
           </li>
+          <% end %>
         </ul>
       </div>
+    </nav>
 
+    <%= if Phoenix.Controller.Flash.get(@conn, :notice) do %>
+    <div class="container">
+      <div class="row">
+	<div class="alert alert-success" role="alert">
+	  <p><%= Phoenix.Controller.Flash.get(@conn, :notice) %></p>
+	</div>
+      </div>
+    </div>
+    <% end %>
+
+    <div class="container">
       <%= @inner %>
-
-    </div> <!-- /container -->
+    </div>
   </body>
 </html>

@@ -1,34 +1,14 @@
 <div class="jumbotron">
-  <h2>Welcome to Phoenix!</h2>
-  <p class="lead">Phoenix is an Elixir Web Framework targeting full-featured, fault tolerant applications with realtime functionality.</p>
+  <h2>Phoenix demo app</h2>
+  <p class="lead">View the code on GitHub at <a href="https://github.com/pmontrasio/phoenix-demo-app">pmontrasio/phoenix-demo-app</a>.</p>
+  <p>This app was demoed at <a href="http://www.rubyday.it/talks/talk-paolo-montrasio-last.html">Ruby Day 2014</a>
+    in Roncade (Treviso), Italy on September 26.</p>
+  <p>Get the slides of that presentation and access links to resources about Elixir and Phoenix
+    <a href="http://www.connettiva.eu/rubyday">here</a>.</p>
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://api.phoenixframework.org/">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/issues?state=open">Issues</a>
-      </li>
-      <li>
-        <a href="irc://irc.freenode.net/elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/chris_mccord">@chris_mccord</a>
-      </li>
-    </ul>
-  </div>
+<div class="row">
+  <h1>Help</h1>
+  <p>Chances are that you already followed the instructions in the README. If you didn't, read how to seed the
+    database and then login with one of the users created in the seeds.exs file.</p>
 </div>
-

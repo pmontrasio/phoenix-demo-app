@@ -41,3 +41,9 @@ mix run seed.exs
 Now you can visit `localhost:4000` from your browser.
 
 6. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.
+
+# LICENSE
+
+This code, by Paolo Montrasio, is licensed under a Creative Commons Attribution ShareAlike 3.0
+
+http://creativecommons.org/licenses/by-sa/3.0/

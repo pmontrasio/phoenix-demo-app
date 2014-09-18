@@ -9,6 +9,7 @@ defmodule MyProject.Views do
       import MyProject.I18n
       import MyProject.Router.Helpers
 			alias MyProject.Router
+			alias Phoenix.Controller.Flash
     end
   end
 

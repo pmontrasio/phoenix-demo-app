@@ -47,11 +47,22 @@
       </div>
     </nav>
 
-    <%= if Phoenix.Controller.Flash.get(@conn, :notice) do %>
+
+    <%= for notice <- Flash.get_all(@conn, :notice) do %>
     <div class="container">
       <div class="row">
 	<div class="alert alert-success" role="alert">
-	  <p><%= Phoenix.Controller.Flash.get(@conn, :notice) %></p>
+	  <p><%= notice %></p>
+	</div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= for alert <- Flash.get_all(@conn, :alert) do %>
+    <div class="container">
+      <div class="row">
+	<div class="alert alert-danger" role="alert">
+	  <p><%= alert %></p>
 	</div>
       </div>
     </div>

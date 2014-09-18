@@ -3,14 +3,16 @@ defmodule MyProject.User do
 	import Ecto.Query
 	require Logger
 
-	validate user,
-	  email: present(),
-		password: present()
-
 	schema "users" do
-		field :email, :string
+		field :email,    :string
 		field :password, :string
+		field :admin,    :boolean
 	end
+
+	validate user,
+	  email:    present(),
+		password: present(),
+	  admin:    present()
 
 	def encrypt_password(plaintext) do
 		# We must pass char lists to Erlang

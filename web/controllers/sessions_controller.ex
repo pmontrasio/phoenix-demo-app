@@ -26,7 +26,7 @@ defmodule MyProject.SessionsController do
 				Logger.debug "LOGIN FAILED"
 				fetch_session(conn)
 				|> put_session(:login_as, email)
-				|> Flash.put(:notice, "Login failed")
+				|> Flash.put(:alert, "Login failed")
 				|> redirect Router.sessions_path(:new)
 		end
   end

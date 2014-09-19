@@ -3,3 +3,14 @@
 <p>You are looking at user <%= @user.email %> as a normal user.</p>
 
 <p>Try looking at <a href="<%= admin_users_path(:show, @user.id) %>"><%= @user.email %></a> as an admin.</p>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var socket = new Phoenix.Socket("/chat");
+    socket.join("channel", "topic", { user: "<%= @current_user.email %>" }, function (channel) {
+      channel.on("return_event", function (message) {
+        console.log("Got " + message + " while listening for event return_event");
+      });
+    });
+  });
+</script>

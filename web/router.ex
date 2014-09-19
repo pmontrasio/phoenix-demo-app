@@ -1,5 +1,6 @@
 defmodule DemoApp.Router do
   use Phoenix.Router
+  use Phoenix.Router.Socket, mount: "/chat"
 
   get "/", DemoApp.PageController, :index, as: :pages
 
@@ -14,4 +15,6 @@ defmodule DemoApp.Router do
 	scope path: "/admin", alias: DemoApp.Admin, helper: "admin" do
 		resources "/users",  UsersController, only: [ :show ]
 	end
+
+	channel "channel", DemoApp.ChatChannel
 end

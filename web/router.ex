@@ -1,17 +1,17 @@
-defmodule MyProject.Router do
+defmodule DemoApp.Router do
   use Phoenix.Router
 
-  get "/", MyProject.PageController, :index, as: :pages
+  get "/", DemoApp.PageController, :index, as: :pages
 
 	#resources "/sessions", SessionsController
 
-	get  "/sessions/new",     MyProject.SessionsController, :new,     as: :sessions
-	get  "/sessions/destroy", MyProject.SessionsController, :destroy, as: :sessions
-	post "/sessions",         MyProject.SessionsController, :create,  as: :sessions
+	get  "/sessions/new",     DemoApp.SessionsController, :new,     as: :sessions
+	get  "/sessions/destroy", DemoApp.SessionsController, :destroy, as: :sessions
+	post "/sessions",         DemoApp.SessionsController, :create,  as: :sessions
 
-	resources "/users",       MyProject.UsersController, only: [ :show ]
+	resources "/users",       DemoApp.UsersController, only: [ :show ]
 
-	scope path: "/admin", alias: MyProject.Admin, helper: "admin" do
+	scope path: "/admin", alias: DemoApp.Admin, helper: "admin" do
 		resources "/users",  UsersController, only: [ :show ]
 	end
 end

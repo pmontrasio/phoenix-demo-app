@@ -1,4 +1,4 @@
-# MyProject
+# DemoApp
 
 Demo project for the Ruby Day 2014
 http://www.rubyday.it/
@@ -14,31 +14,27 @@ PostgreSQL:
 
 ```
 $ psql -U postgres
-create role my_project login password 'password';
-create database my_project owner my_project encoding='UTF8' lc_collate='en_US.utf8' lc_ctype='en_US.utf8';
-create database my_project owner my_project encoding='UTF8' lc_collate='en_US.UTF-8' lc_ctype='en_US.UTF-8';
-grant all on database my_project to my_project;
-alter database my_project owner to my_project;
+create role demo_app login password 'password';
+create database demo_app owner demo_app encoding='UTF8' lc_collate='en_US.UTF-8' lc_ctype='en_US.UTF-8';
+grant all on database demo_app to demo_app;
+alter database demo_app owner to demo_app;
 \q
 ```
 
 Exercise: adapt this to MySQL.
-Hint: you need to change the driver in mix.exs and lib/my_project/repo.ex
+Hint: you need to change the driver in mix.exs and lib/demo_app/repo.ex
 Google for the driver.
 
-2. Install dependencies with `mix do deps.get, compile`
+2. Install dependencies with ```mix do deps.get, compile```
 
-3. Run the migrations with `mix ecto.migrate Repo`
+3. Run the migrations with ```mix ecto.migrate Repo```
 
-4. Seed the database
-
-```
-mix run seed.exs
+4. Seed the database with ```mix run seed.exs```
 ```
 
-5. Start Phoenix router with `mix phoenix.start`
+5. Start Phoenix router with ```mix phoenix.start```
 
-Now you can visit `localhost:4000` from your browser.
+Now you can visit ```localhost:4000``` from your browser.
 
 6. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.
 

@@ -1,8 +1,8 @@
-defmodule MyProject.Mixfile do
+defmodule DemoApp.Mixfile do
   use Mix.Project
 
   def project do
-    [ app: :my_project,
+    [ app: :demo_app,
       version: "0.0.1",
       elixir: "~> 1.0.0",
       elixirc_paths: ["lib", "web"],
@@ -12,7 +12,7 @@ defmodule MyProject.Mixfile do
   # Configuration for the OTP application
   def application do
     [
-      mod: { MyProject, [] },
+      mod: { DemoApp, [] },
       applications: [:phoenix, :cowboy, :logger, :postgrex, :ecto]
     ]
   end

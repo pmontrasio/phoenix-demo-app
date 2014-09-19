@@ -1,3 +1,3 @@
-defmodule MyProject.Session do
+defmodule DemoApp.Session do
 
 end

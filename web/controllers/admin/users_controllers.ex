@@ -1,11 +1,11 @@
-defmodule MyProject.Admin.UsersController do
+defmodule DemoApp.Admin.UsersController do
   use Phoenix.Controller
 	require Logger
-	alias MyProject.User
-	require AuthenticationPlug
+	alias DemoApp.User
+	require Authentication
 	require AdminsOnly
 
-	plug AuthenticationPlug
+	plug Authentication
 	plug AdminsOnly
 
   def show(conn, _params) do

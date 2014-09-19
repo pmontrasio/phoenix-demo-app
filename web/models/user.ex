@@ -1,4 +1,4 @@
-defmodule MyProject.User do
+defmodule DemoApp.User do
 	use Ecto.Model
 	import Ecto.Query
 	require Logger
@@ -22,7 +22,7 @@ defmodule MyProject.User do
 	def find(email, plaintext_password) do
 		encrypted_password = encrypt_password(plaintext_password)
 		# The pin ^ is mandatory here to inject variables from outside the query
-		query = from u in MyProject.User,
+		query = from u in DemoApp.User,
 		  where: u.email == ^email and u.password == ^encrypted_password,
 			select: u
 		Repo.all(query)

@@ -1,4 +1,4 @@
-defmodule MyProject.PageView do
-  use MyProject.Views
+defmodule DemoApp.PageView do
+  use DemoApp.Views
 
 end

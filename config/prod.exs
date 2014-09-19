@@ -9,15 +9,14 @@ use Mix.Config
 # Where those two env variables point to a file on disk
 # for the key and cert
 
-config :phoenix, MyProject.Router,
+config :phoenix, DemoApp.Router,
   port: System.get_env("PORT"),
   ssl: false,
   host: "example.com",
   cookies: true,
-  session_key: "_my_project_key",
+  session_key: "_demo_app_key",
   session_secret: "4D5JB(FQM+@YEVCN0D#O$V%__R&N78G=^J$)_TE*L+7BLNLJUMTI&6Y6T6JML^%UPM&LN%67LW=*)S"
 
 config :logger, :console,
   level: :info,
   metadata: [:request_id]
-

@@ -1,4 +1,4 @@
-defmodule MyProject do
+defmodule DemoApp do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -14,7 +14,7 @@ defmodule MyProject do
       # worker(TestApp.Worker, [arg1, arg2, arg3])
     ]
 
-    opts = [strategy: :one_for_one, name: MyProject.Supervisor]
+    opts = [strategy: :one_for_one, name: DemoApp.Supervisor]
     Supervisor.start_link(tree, opts)
   end
 end

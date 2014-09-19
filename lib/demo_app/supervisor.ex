@@ -1,4 +1,4 @@
-defmodule MyProject.Supervisor do
+defmodule DemoApp.Supervisor do
   use Supervisor
 
   def start_link do

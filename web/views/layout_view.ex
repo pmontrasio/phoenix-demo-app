@@ -1,4 +1,4 @@
-defmodule MyProject.LayoutView do
-  use MyProject.Views
+defmodule DemoApp.LayoutView do
+  use DemoApp.Views
 
 end

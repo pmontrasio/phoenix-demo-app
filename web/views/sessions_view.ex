@@ -1,4 +1,4 @@
-defmodule MyProject.SessionsView do
-  use MyProject.Views
+defmodule DemoApp.SessionsView do
+  use DemoApp.Views
 
 end

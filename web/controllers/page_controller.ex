@@ -1,8 +1,8 @@
-defmodule MyProject.PageController do
+defmodule DemoApp.PageController do
   use Phoenix.Controller
-	require AuthenticationPlug
+	require Authentication
 
-	plug AuthenticationPlug
+	plug Authentication
 
   def index(conn, _params) do
     render conn, "index"

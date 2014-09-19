@@ -1,6 +1,6 @@
-defmodule AuthenticationPlug do
+defmodule Authentication do
 	import Plug.Conn
-	alias MyProject.User
+	alias DemoApp.User
 	require Logger
 
 	@behaviour Plug

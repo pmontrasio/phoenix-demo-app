@@ -3,11 +3,11 @@ defmodule Repo do
 
 	def conf do
 		#                 user       pass     host      db name
-		parse_url "ecto://my_project:password@localhost/my_project"
+		parse_url "ecto://demo_app:password@localhost/demo_app"
 	end
 
 	def priv do
 		# migration files goes in there
-		app_dir :my_project, "priv/repo"
+		app_dir :demo_app, "priv/repo"
 	end
 end

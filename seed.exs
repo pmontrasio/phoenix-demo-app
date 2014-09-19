@@ -1,5 +1,5 @@
-admin = %MyProject.User{ email: "admin@example.com", password: MyProject.User.encrypt_password("password"), admin: true }
-user  = %MyProject.User{ email: "user@example.com",  password: MyProject.User.encrypt_password("password"), admin: false }
+admin = %DemoApp.User{ email: "admin@example.com", password: DemoApp.User.encrypt_password("password"), admin: true }
+user  = %DemoApp.User{ email: "user@example.com",  password: DemoApp.User.encrypt_password("password"), admin: false }
 
 # Start the repo process
 Repo.start_link

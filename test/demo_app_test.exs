@@ -1,4 +1,4 @@
-defmodule MyProjectTest do
+defmodule DemoAppTest do
   use ExUnit.Case
 
   test "the truth" do

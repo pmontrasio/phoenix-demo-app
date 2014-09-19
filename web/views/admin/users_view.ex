@@ -1,4 +1,4 @@
-defmodule MyProject.Admin.UsersView do
-  use MyProject.Views
+defmodule DemoApp.Admin.UsersView do
+  use DemoApp.Views
 
 end

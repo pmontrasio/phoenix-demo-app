@@ -1,10 +1,10 @@
-defmodule MyProject.UsersController do
+defmodule DemoApp.UsersController do
   use Phoenix.Controller
 	require Logger
-	alias MyProject.User
-	require AuthenticationPlug
+	alias DemoApp.User
+	require Authentication
 
-	plug AuthenticationPlug
+	plug Authentication
 
   def show(conn, _params) do
 		%{ "id" => user_id } = _params

@@ -5,16 +5,16 @@ use Mix.Config
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project.
 
-config :phoenix, MyProject.Router,
+config :phoenix, DemoApp.Router,
   port: System.get_env("PORT"),
   ssl: false,
   static_assets: true,
   cookies: true,
-  session_key: "_my_project_key",
+  session_key: "_demo_app_key",
   session_secret: "4D5JB(FQM+@YEVCN0D#O$V%__R&N78G=^J$)_TE*L+7BLNLJUMTI&6Y6T6JML^%UPM&LN%67LW=*)S",
   catch_errors: true,
   debug_errors: false,
-  error_controller: MyProject.PageController
+  error_controller: DemoApp.PageController
 
 config :phoenix, :code_reloader,
   enabled: false

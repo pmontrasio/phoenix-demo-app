@@ -1,10 +1,10 @@
-defmodule MyProject.SessionsController do
+defmodule DemoApp.SessionsController do
   use Phoenix.Controller
 	require Logger
 
-	# shorthand for alias MyProject.Router, as: Router
-	alias MyProject.Router # So we can just write Router.
-	alias MyProject.User
+	# shorthand for alias DemoApp.Router, as: Router
+	alias DemoApp.Router # So we can just write Router.
+	alias DemoApp.User
 
   def new(conn, _params) do
     render conn, "new"
@@ -12,7 +12,7 @@ defmodule MyProject.SessionsController do
 
 	# This will work only if it receives user[email] and user[password]
 	# If one of them is missing we'll get an error
-	# (FunctionClauseError) no function clause matching in MyProject.SessionsController.create/2
+	# (FunctionClauseError) no function clause matching in DemoApp.SessionsController.create/2
   def create(conn, _params) do
 		%{ "user" => %{ "email" => email, "password" => password }} = _params
 		case User.find(email, password) do

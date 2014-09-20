@@ -3,14 +3,69 @@
 <p>You are looking at user <%= @user.email %> as a normal user.</p>
 
 <p>Try looking at <a href="<%= admin_users_path(:show, @user.id) %>"><%= @user.email %></a> as an admin.</p>
+<p>Or open another browser and connect as another user and type in the chat below.</p>
+
+<div class="row">
+  <div id="chat">
+  </div>
+</div>
+
+<div class="row">
+  <form action="#" accept-charset="UTF-8" class="form-inline" method="post">
+    <div class="form-group col-xs-10">
+      <input type="text" id="message" class="form-control" value="" placeholder="Type a message">
+    </div>
+    <div class="form-group col-xs-2">
+      <input type="submit" id="send" class="btn btn-primary" value="Send">
+    </div>
+  </form>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function () {
+
+    var chat = $("#chat");
+    var send = $("#send");
+    var message = $("#message");
+
     var socket = new Phoenix.Socket("/chat");
-    socket.join("channel", "topic", { user: "<%= @current_user.email %>" }, function (channel) {
-      channel.on("return_event", function (message) {
-        console.log("Got " + message + " while listening for event return_event");
+    socket.join("channel", "chat", { user: "<%= @current_user.email %>" }, function (channel) {
+      channel.on("join", function (message) {
+        chat.append("<p>" + timestamp() + " <strong>" + escapeHTML(message.content) + "</strong></p>");
+        scrollToBottom();
       });
+      channel.on("message", function (message) {
+        chat.append("<p>" + timestamp() + " <strong class=\"chat-user\">" + escapeHTML(message.user) + "</strong>: " + escapeHTML(message.message) + "</p>");
+        scrollToBottom();
+      });
+      channel.on("error", function (error) {
+        if (typeof console.log === "function") {
+          console.log("Error: " + error.reason);
+        }
+      });
+
+      send.click(function () {
+        channel.send("chat:message", { message: message.val(), user: "<%= @current_user.email %>" });
+        message.val("");
+        return false;
+      });
+
     });
+
+    var scrollToBottom = function () {
+      chat.scrollTop(chat[0].scrollHeight);
+    };
+
+    var timestamp = function () {
+      var now = new Date();
+      return "[" + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + "]";
+    };
+
+    // From http://bugs.jquery.com/ticket/11773#comment:20
+    var escapeHTML = function (s) {
+      return String(s).replace(/&(?!\w+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+
+
   });
 </script>

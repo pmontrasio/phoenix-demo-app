@@ -1,8 +1,4 @@
 <div class="jumbotron">
   <h2>Phoenix demo app</h2>
   <p class="lead">View the code on GitHub at <a href="https://github.com/pmontrasio/phoenix-demo-app">pmontrasio/phoenix-demo-app</a>.</p>
-  <p>This app was demoed at <a href="http://www.rubyday.it/talks/talk-paolo-montrasio-last.html">Ruby Day 2014</a>
-    in Roncade (Treviso), Italy on September 26.</p>
-  <p>Get the slides of that presentation and access links to resources about Elixir and Phoenix
-    <a href="http://www.connettiva.eu/rubyday">here</a>.</p>
 </div>

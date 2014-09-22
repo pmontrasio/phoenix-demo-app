@@ -33,7 +33,7 @@
     var message = $("#message");
 
     var socket = new Phoenix.Socket("/chat");
-    socket.join("channel", "chat", { user: "<%= @current_user.email %>" }, function (channel) {
+    socket.join("channel", "chat", {}, function (channel) {
       channel.on("join", function (message) {
         chat.append("<p>" + timestamp() + " <strong>" + escapeHTML(message.content) + "</strong></p>");
         scrollToBottom();

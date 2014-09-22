@@ -40,7 +40,7 @@ defmodule DemoApp.ChatChannel do
 	end
 
 	defp get_user(socket) do
-		{:ok, %{user_id: user_id}} = get_session(socket)
+		{:ok, %{user_id: user_id}} = get_session(socket) # TODO handle error conditions
 		unless user_id == nil do
 			Repo.get(User, user_id)
 		else
@@ -49,10 +49,11 @@ defmodule DemoApp.ChatChannel do
 	end
 
 	defp get_session(socket) do
-		{"cookie", s1} = List.keyfind(elem(socket.conn, 16), "cookie", 0)
-		s2 = Plug.Conn.Cookies.decode(s1)
-	  %{"_demo_app_key" => secret} = s2
-		Plug.MessageVerifier.verify "4D5JB(FQM+@YEVCN0D#O$V%__R&N78G=^J$)_TE*L+7BLNLJUMTI&6Y6T6JML^%UPM&LN%67LW=*)S", secret
+		session_key = Phoenix.Config.router(DemoApp.Router)[:session_key]
+		session_secret = Phoenix.Config.router(DemoApp.Router)[:session_secret]
+		cookies = List.keyfind(elem(socket.conn, 16), "cookie", 0)	|> elem(1)
+	  session_store = Plug.Conn.Cookies.decode(cookies)[session_key]
+		Plug.MessageVerifier.verify(session_secret, session_store)
 	end
 
 end

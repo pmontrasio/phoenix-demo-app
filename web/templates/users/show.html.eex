@@ -19,6 +19,7 @@
       <input type="submit" id="send" class="btn btn-primary" value="Send">
     </div>
     <div class="form-group col-xs-1">
+      <!-- this is useless for a real chat but it's ok for a demo -->
       <input type="submit" id="leave" class="btn btn-primary" value="Leave">
     </div>
   </form>
@@ -64,7 +65,7 @@
       });
 
       leave.click(function () {
-        console.log("LEAVE");
+        // console.log("LEAVE");
         channel.send("leave", { reason: "bye" });
         return false;
       });

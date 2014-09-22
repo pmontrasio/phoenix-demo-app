@@ -9,12 +9,21 @@ defmodule DemoApp.ChatChannel do
 
   def join(socket, topic, message) do
 		user = message["user"]
-		broadcast socket, "join", %{content: "#{user} joined #{topic}"}
+		#Logger.debug "JOIN #{user}"
+		broadcast socket, "join", %{content: "#{user} joined the chat"}
     {:ok, socket}
   end
 
   def event(socket, "chat:message", message) do
+		#Logger.debug "#{message["user"]}: #{message["message"]}"
 		broadcast socket, "message", message
+		socket
+	end
+
+	def leave(socket, topic) do
+		#Logger.debug "SOMEBODY LEFT"
+		broadcast socket, "user:left", %{ "content" => "somebody left the chat" }
+		# next step: identify who left the chat. Check Socket.assigns and Socket.conn
 		socket
 	end
 

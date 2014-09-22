@@ -15,8 +15,11 @@
     <div class="form-group col-xs-10">
       <input type="text" id="message" class="form-control" value="" placeholder="Type a message">
     </div>
-    <div class="form-group col-xs-2">
+    <div class="form-group col-xs-1">
       <input type="submit" id="send" class="btn btn-primary" value="Send">
+    </div>
+    <div class="form-group col-xs-1">
+      <input type="submit" id="leave" class="btn btn-primary" value="Leave">
     </div>
   </form>
 </div>
@@ -26,6 +29,7 @@
 
     var chat = $("#chat");
     var send = $("#send");
+    var leave = $("#leave");
     var message = $("#message");
 
     var socket = new Phoenix.Socket("/chat");
@@ -35,7 +39,13 @@
         scrollToBottom();
       });
       channel.on("message", function (message) {
-        chat.append("<p>" + timestamp() + " <strong class=\"chat-user\">" + escapeHTML(message.user) + "</strong>: " + escapeHTML(message.message) + "</p>");
+        var user = escapeHTML(message.user);
+        var css_class = user == '<%= @user.email %>' ? "chat-user" : "chat-other-user";
+        chat.append("<p>" + timestamp() + " <strong class=\"" + css_class + "\">" + user + "</strong>: " + escapeHTML(message.message) + "</p>");
+        scrollToBottom();
+      });
+      channel.on("user:left", function (message) {
+        chat.append("<p>" + timestamp() + " <strong>" + escapeHTML(message.content) + "</strong></p>");
         scrollToBottom();
       });
       channel.on("error", function (error) {
@@ -45,8 +55,17 @@
       });
 
       send.click(function () {
-        channel.send("chat:message", { message: message.val(), user: "<%= @current_user.email %>" });
-        message.val("");
+        var text = message.val();
+        if (text != "") {
+          channel.send("chat:message", { user: "<%= @current_user.email %>", message: text });
+          message.val("");
+        }
+        return false;
+      });
+
+      leave.click(function () {
+        console.log("LEAVE");
+        channel.send("leave", { reason: "bye" });
         return false;
       });
 
@@ -58,8 +77,16 @@
 
     var timestamp = function () {
       var now = new Date();
-      return "[" + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + "]";
+      return "[" + pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds()) + "]";
     };
+
+    var pad = function(number) {
+      if (number < 10) {
+        return "0" + number;
+      } else {
+        return number;
+      }
+    }
 
     // From http://bugs.jquery.com/ticket/11773#comment:20
     var escapeHTML = function (s) {

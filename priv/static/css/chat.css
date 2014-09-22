@@ -1,4 +1,6 @@
 #chat { height: 200px; border: 1px solid #999; margin: 15px; overflow-y: scroll }
 #message { width: 100% }
 #send { width: 100% }
-.chat-user { color: blue }
+#leave { width: 100% }
+.chat-user { color: #3276b1 }
+.chat-other-user { color: #000044 }

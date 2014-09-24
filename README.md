@@ -28,3 +28,7 @@ Google for the driver.
 Now you can visit `localhost:4000` from your browser.
 
 6. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.
+
+# Deploy on Heroku
+
+I'm working on it. See https://github.com/goshakkk/heroku-buildpack-elixir/issues/13

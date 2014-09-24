@@ -19,15 +19,26 @@ Google for the driver.
 
 2. Install dependencies with `mix do deps.get, compile`
 
-3. Run the migrations with `mix ecto.migrate Repo`
+3. Set the environment variables to access the database (check `lib/demo_app/repo.ex`)
 
-4. Seed the database with `mix run seed.exs`
+    export DB_USER=demo_app
+    export DB_PASSWORD=password
+    export DB_HOST=localhost
+    export DB_NAME=demo_app
 
-5. Start Phoenix router with `DB_USER=demo_app DB_PASSWORD=password DB_HOST=localhost DB_NAME=demo_app mix phoenix.start`
+4. Run the migrations with `mix ecto.migrate Repo`
 
-Now you can visit `localhost:4000` from your browser.
+5. Seed the database with `mix run seed.exs`
 
-6. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.
+6. Start Phoenix router with `mix phoenix.start`
+
+7. Visit `localhost:4000`
+
+8. Login as an admin with admin@example.com / password or login as a user with user@example.com / password.
+
+9. Follow the instructions inside the pages.
+
+10. Fork it and make it better!
 
 # Deploy on Heroku
 

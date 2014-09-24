@@ -1,1 +1,1 @@
-web: mix run --no-halt
+web: elixir -pa _build/prod/consolidated -S mix phoenix.start

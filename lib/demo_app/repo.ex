@@ -2,8 +2,14 @@ defmodule Repo do
 	use Ecto.Repo, adapter: Ecto.Adapters.Postgres
 
 	def conf do
-		#                 user       pass     host      db name
-		parse_url "ecto://demo_app:password@localhost/demo_app"
+		user     = System.get_env("DB_USER")
+		password = System.get_env("DB_PASSWORD")
+		host     = System.get_env("DB_HOST")
+		db_name  = System.get_env("DB_NAME")
+		parse_url "ecto://#{user}:#{password}@#{host}/#{db_name}"
+
+		# or you can System.get_env("DATABASE_URL") if deploying on Heroku
+		# see https://github.com/goshakkk/heroku-buildpack-elixir
 	end
 
 	def priv do

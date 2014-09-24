@@ -2,4 +2,5 @@
 
 <p>You are looking at user <%= @user.email %> as an admin.</p>
 
-<p>Try looking at <a href="<%= users_path(:show, @user.id) %>"><%= @user.email %></a> as a normal user.</p>
+<h2>Things to do</h2>
+<p>Try looking at <a href="<%= users_path(:show, @user.id) %>"><%= @user.email %></a> as a normal user. The chat is there.</p>

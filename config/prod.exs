@@ -12,10 +12,10 @@ use Mix.Config
 config :phoenix, DemoApp.Router,
   port: System.get_env("PORT"),
   ssl: false,
-  host: "example.com",
+  host: System.get_env("HOST"),
   cookies: true,
   session_key: "_demo_app_key",
-  session_secret: "4D5JB(FQM+@YEVCN0D#O$V%__R&N78G=^J$)_TE*L+7BLNLJUMTI&6Y6T6JML^%UPM&LN%67LW=*)S"
+  session_secret: System.get_env("SESSION_SECRET")
 
 config :logger, :console,
   level: :info,

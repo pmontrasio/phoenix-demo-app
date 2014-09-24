@@ -23,7 +23,7 @@ Google for the driver.
 
 4. Seed the database with `mix run seed.exs`
 
-5. Start Phoenix router with `mix phoenix.start`
+5. Start Phoenix router with `DB_USER=demo_app DB_PASSWORD=password DB_HOST=localhost DB_NAME=demo_app mix phoenix.start`
 
 Now you can visit `localhost:4000` from your browser.
 

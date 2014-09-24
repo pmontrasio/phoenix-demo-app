@@ -2,8 +2,11 @@
 
 <p>You are looking at user <%= @user.email %> as a normal user.</p>
 
+<h2>First thing to do</h2>
 <p>Try looking at <a href="<%= admin_users_path(:show, @user.id) %>"><%= @user.email %></a> as an admin.</p>
-<p>Or open another browser and connect as another user and type in the chat below.</p>
+
+<h2>Second thing to do</h2>
+<p>Open another browser and connect as another user and type in the chat below.</p>
 
 <div class="row">
   <div id="chat">
@@ -20,7 +23,7 @@
     </div>
     <div class="form-group col-xs-1">
       <!-- this is useless for a real chat but it's ok for a demo -->
-      <input type="submit" id="leave" class="btn btn-primary" value="Leave">
+      <input type="submit" id="leave" class="btn btn-primary" value="Leave" title="It closes the websocket for the chat. Messages can't be sent or received anymore after that. Reload the page to rejoin the chat.">
     </div>
   </form>
 </div>

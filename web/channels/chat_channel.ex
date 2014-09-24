@@ -1,6 +1,5 @@
 defmodule DemoApp.ChatChannel do
   use Phoenix.Channel
-	import Plug.Conn
 	require Logger
 	alias DemoApp.User
 
